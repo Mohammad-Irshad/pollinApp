@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   );
 });
 
-// User Api
+// Api
 app.post("/addPoll", addNewPoll); // Add new poll
 app.post("/polls/:pollId", voteAPoll); // Vote a poll
 app.get("/getPolls", getAllPolls); // Get all polls

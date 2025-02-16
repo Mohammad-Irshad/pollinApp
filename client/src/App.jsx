@@ -67,14 +67,27 @@ function App() {
                         <br />
 
                         {(() => {
-                          const maxOption = poll.options.reduce(
-                            (max, option) => (option.votes > max.votes ? option : max),
-                            poll.options[0]
-                          );
+                          const maxVotes = Math.max(...poll.options.map(option => option.votes));
+
+                          if (maxVotes === 0) {
+                            return (
+                              <p className="mt-3">
+                                <strong>Leading Option: </strong>
+                                No votes yet.
+                              </p>
+                            );
+                          }
+
+                          const winners = poll.options.filter(option => option.votes === maxVotes);
+
+                          const winnerText = winners
+                            .map(option => `${option.text} with ${option.votes} votes`)
+                            .join(', ');
+
                           return (
                             <p className="mt-3">
-                              <strong>Leading Option: </strong>
-                              {maxOption.text} with {maxOption.votes} votes
+                              <strong>Leading Option(s): </strong>
+                              {winnerText}
                             </p>
                           );
                         })()}
@@ -87,7 +100,7 @@ function App() {
 
               :
 
-              <p>No polls for now!</p>
+              null
 
             }
 
