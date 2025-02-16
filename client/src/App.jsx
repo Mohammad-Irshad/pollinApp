@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllPolls())
-    // Set up auto-refresh every 5 seconds
     const interval = setInterval(() => {
       dispatch(getAllPolls());
     }, 5000);
@@ -25,7 +24,6 @@ function App() {
   }, [dispatch]);
 
   const handleVote = (poll, optionIndex) => {
-    // Create an updated poll object by incrementing the vote count for the selected option
     dispatch(updatePoll({ pollId: poll._id, updatedData: { optionIndex } }));
   };
 
@@ -33,9 +31,7 @@ function App() {
     <>
       <Header />
       <main className='container'>
-        <h2>All Polls</h2>
         <div>
-
           <div className="container my-5">
             <h1 className="text-center mb-4">All Polls</h1>
 

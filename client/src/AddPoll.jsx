@@ -17,14 +17,12 @@ const AddPoll = () => {
         setOptions(newOptions);
     };
 
-    // Add a new empty option field
     const addOption = () => {
         setOptions([...options, ""]);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Filter out empty strings and trim options
         const filteredOptions = options.map(opt => opt.trim()).filter(opt => opt);
         if (!question.trim() || filteredOptions.length < 2) {
             alert("Please provide a question and at least two options.");
