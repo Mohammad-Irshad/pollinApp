@@ -6,7 +6,7 @@ export const addNewPoll = createAsyncThunk(
   async (pollData) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/addPoll`,
+        `https://pollin-app.vercel.app/addPoll`,
         pollData
       );
       console.log("Added Poll", response.data);
@@ -23,7 +23,7 @@ export const updatePoll = createAsyncThunk(
     try {
       console.log("Poll id : ", pollId, "Updated data : ", updatedData);
       const response = await axios.post(
-        `http://localhost:3000/polls/${pollId}`,
+        `https://pollin-app.vercel.app/polls/${pollId}`,
         updatedData
       );
       console.log("Updaed Poll : ", response.data);
@@ -36,7 +36,7 @@ export const updatePoll = createAsyncThunk(
 
 export const getAllPolls = createAsyncThunk("poll/getAllPolls", async () => {
   try {
-    const response = await axios.get(`http://localhost:3000/getPolls`);
+    const response = await axios.get(`https://pollin-app.vercel.app/getPolls`);
     console.log("All polls : ", response.data);
     return response.data;
   } catch (error) {
